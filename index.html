@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Studio Suzu — brand guidelines.">
 <title>Studio Suzu — Brandbook</title>
 <!-- Jost e Cormorant vão EMBUTIDAS (woff2 variável, latin + latin-ext, SIL OFL).
      O brandbook renderiza 100% sem rede — não há mais texto japonês (removido);
@@ -145,8 +144,12 @@
   .sig{font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:0}
   p b{font-weight:500;color:var(--text)}
 
+  /* subtitle → content: mesmo respiro depois da lede em toda seção, seja card, lista ou grid */
+  .lede + .pillars, .lede + .deflist, .lede + .logo-grid, .lede + .icon-grid,
+  .lede + .block-label, .lede + .voice, .lede + .swatches, .lede + .fb{margin-top:2.8rem}
+  .sec-head + .block-label{margin-top:0}
   /* editorial section head — asymmetric, with index */
-  .sec-head{margin-bottom:3.6rem}
+  .sec-head{margin-bottom:1.8rem}
   /* na essence o título (hero-quote) é irmão do sec-head, não filho: a margem de
      3,6rem virava o vão eyebrow→título. Iguala ao 1,2rem das outras seções. */
   .essence .sec-head{margin-bottom:1.2rem}
@@ -256,10 +259,9 @@
   .voice{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:1.8rem}
   .voice>div{background:var(--papel);border:1px solid var(--hair);border-radius:12px;padding:1.7rem 1.8rem}
   .voice h4{font-family:var(--sans);font-size:var(--label);letter-spacing:var(--label-track);text-transform:uppercase;font-weight:400;margin-bottom:1rem;color:var(--rotulo)}
-  .voice li{list-style:none;font-size:.98rem;padding:.32rem 0;color:var(--text-3)}
-  .voice .yes li::before{content:"—  ";color:var(--ouro-txt)}
-  .voice .no li{color:var(--pedra-txt)}
-  .voice .no li::before{content:"×  ";color:var(--madeira-txt)}
+  .voice li{list-style:none;font-size:.98rem;padding:.32rem 0;color:var(--text-3);display:grid;grid-template-columns:1.25em 1fr;gap:.55em;align-items:baseline}
+  .voice .yes li::before{content:"";width:1em;height:1em;align-self:start;margin-top:.16em;background:var(--ouro-txt);-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27white%27%20stroke-width%3D%272.4%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpolyline%20points%3D%2720%206%209%2017%204%2012%27%2F%3E%3C%2Fsvg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27white%27%20stroke-width%3D%272.4%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpolyline%20points%3D%2720%206%209%2017%204%2012%27%2F%3E%3C%2Fsvg%3E") center/contain no-repeat}
+    .voice .no li::before{content:"";width:1em;height:1em;align-self:start;margin-top:.16em;background:var(--madeira-txt);-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27white%27%20stroke-width%3D%272.4%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cline%20x1%3D%2718%27%20y1%3D%276%27%20x2%3D%276%27%20y2%3D%2718%27%2F%3E%3Cline%20x1%3D%276%27%20y1%3D%276%27%20x2%3D%2718%27%20y2%3D%2718%27%2F%3E%3C%2Fsvg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27white%27%20stroke-width%3D%272.4%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cline%20x1%3D%2718%27%20y1%3D%276%27%20x2%3D%276%27%20y2%3D%2718%27%2F%3E%3Cline%20x1%3D%276%27%20y1%3D%276%27%20x2%3D%2718%27%20y2%3D%2718%27%2F%3E%3C%2Fsvg%3E") center/contain no-repeat}
 
   /* ============ LOGO ============ */
   .logo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;margin-top:1.8rem}
@@ -304,6 +306,8 @@
   .logo-cell.light .tag{color:#6F5E48} .logo-cell.dark .tag{color:#C9B191}
   /* os 3 SVGs abaixo sao inline (documento autossuficiente) — nada de <img> externo */
   .logo-inline-bar{border:1px solid var(--line);border-radius:14px;background:var(--papel);padding:2.6rem 2rem;margin-top:1.4rem;text-align:center}
+  /* a versão dark do inline usa o mesmo charcoal e hairline da .logo-cell.dark (não o surface) */
+  .logo-inline-bar.only-dark{background:var(--carvao)}
   .logo-inline-bar svg{width:min(80%,470px);height:auto;display:block;margin:0 auto}
   .logo-ondas{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
   .logo-ondas svg{width:100%;height:auto;display:block}
@@ -478,6 +482,8 @@
       padding:.45rem .85rem;min-height:30px;cursor:pointer;white-space:nowrap;
       transition:color .15s,border-color .15s}
   .dl:hover{color:var(--text);border-color:var(--ouro)}
+  /* seta do botão como ícone Feather; ::after sobrevive ao piscar (troca só o texto) */
+  .dl::after{content:"";display:inline-block;vertical-align:-.12em;width:.95em;height:.95em;margin-left:.5em;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27white%27%20stroke-width%3D%272.4%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cline%20x1%3D%2712%27%20y1%3D%275%27%20x2%3D%2712%27%20y2%3D%2719%27%2F%3E%3Cpolyline%20points%3D%2719%2012%2012%2019%205%2012%27%2F%3E%3C%2Fsvg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27white%27%20stroke-width%3D%272.4%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cline%20x1%3D%2712%27%20y1%3D%275%27%20x2%3D%2712%27%20y2%3D%2719%27%2F%3E%3Cpolyline%20points%3D%2719%2012%2012%2019%205%2012%27%2F%3E%3C%2Fsvg%3E") center/contain no-repeat}
   .dl[data-feito]{border-color:var(--ouro);color:var(--text)}
   .logo-cell .dl,.logo-ondas .dl{position:absolute;bottom:.8rem;right:.9rem;z-index:2}
   .logo-cell.dark .dl{background:transparent;color:#C9B191;border-color:var(--carvao-borda)}
@@ -942,8 +948,8 @@
         <h4>Jost</h4>
         <p>Variable, weight 100–900. Latin and Latin&nbsp;Extended. SIL Open Font License 1.1 — free to embed, ship and modify.</p>
         <div class="acoes">
-          <button type="button" class="dl" data-fonte="Jost|latin" aria-label="Download Jost, latin subset, as woff2">woff2 latin ↓</button>
-          <button type="button" class="dl" data-fonte="Jost|latin-ext" aria-label="Download Jost, latin extended subset, as woff2">woff2 ext ↓</button>
+          <button type="button" class="dl" data-fonte="Jost|latin" aria-label="Download Jost, latin subset, as woff2">woff2 latin</button>
+          <button type="button" class="dl" data-fonte="Jost|latin-ext" aria-label="Download Jost, latin extended subset, as woff2">woff2 ext</button>
         </div>
       </div>
       <div class="fonte">
@@ -951,8 +957,8 @@
         <h4>Cormorant italic</h4>
         <p>Variable, weight 300–700, italic only — the brand never uses the roman cut. SIL Open Font License 1.1.</p>
         <div class="acoes">
-          <button type="button" class="dl" data-fonte="Cormorant|latin" aria-label="Download Cormorant italic, latin subset, as woff2">woff2 latin ↓</button>
-          <button type="button" class="dl" data-fonte="Cormorant|latin-ext" aria-label="Download Cormorant italic, latin extended subset, as woff2">woff2 ext ↓</button>
+          <button type="button" class="dl" data-fonte="Cormorant|latin" aria-label="Download Cormorant italic, latin subset, as woff2">woff2 latin</button>
+          <button type="button" class="dl" data-fonte="Cormorant|latin-ext" aria-label="Download Cormorant italic, latin extended subset, as woff2">woff2 ext</button>
         </div>
       </div>
     </div>
@@ -1304,7 +1310,7 @@
     const tag = cel.querySelector('.tag');
     const nome = tag ? limpo(tag.textContent) : 'suzu-inline';
     const b = document.createElement('button');
-    b.type = 'button'; b.className = 'dl'; b.textContent = 'SVG ↓';
+    b.type = 'button'; b.className = 'dl'; b.textContent = 'SVG';
     b.setAttribute('aria-label', 'Download ' + (tag ? tag.textContent.trim() : 'inline logo') + ' as SVG');
     ligarBotaoSVG(b, () => svg, () => `Studio_Suzu_${nome}.svg`);
     cel.appendChild(b);
@@ -1315,7 +1321,7 @@
     const svg = fig.querySelector('svg');
     const nome = limpo(fig.querySelector('figcaption').textContent);
     const b = document.createElement('button');
-    b.type = 'button'; b.className = 'dl'; b.textContent = 'SVG ↓';
+    b.type = 'button'; b.className = 'dl'; b.textContent = 'SVG';
     b.setAttribute('aria-label', 'Download the ' + nome + ' seal as SVG');
     ligarBotaoSVG(b, () => svg, () => `Studio_Suzu_Selo_${nome}.svg`);
     fig.appendChild(b);
@@ -1360,7 +1366,7 @@
     cap.className = 'cap';
     cap.textContent = idPattern.replace(/-/g,' · ') + ' — 300 × 300 mm, vector';
     const b = document.createElement('button');
-    b.type = 'button'; b.className = 'dl'; b.textContent = 'SVG ↓';
+    b.type = 'button'; b.className = 'dl'; b.textContent = 'SVG';
     b.setAttribute('aria-label', 'Download the ' + idPattern + ' pattern as a print-size SVG');
     b.addEventListener('click', () => {
       const arq = estampaParaArquivo(idPattern, fundo);
