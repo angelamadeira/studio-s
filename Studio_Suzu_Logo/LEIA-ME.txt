@@ -1,0 +1,47 @@
+STUDIO SUZU — LOGOTIPO
+======================
+Tipografia: Jost Light, vetorizada (não depende de fonte instalada).
+Cor oficial: grafite #3A3038 sobre claro · branco #FFFFFF sobre escuro.
+Superfície escura da marca: carvão #1E1A16.
+O formato oficial é o SELO REDONDO — a forma do guizo 鈴.
+
+/SVG — vetor (impressão, corte, bordado, web; escala infinita)
+  Studio_Suzu_Selo_Light.svg / _Dark.svg
+      su/zu empilhado dentro do selo redondo. É o logo oficial.
+      O contorno tem 52/1600 do diâmetro: exatamente a haste da Jost Light.
+  Studio_Suzu_Inline_Light.svg / _Dark.svg
+      wordmark horizontal "suzu" — para assinaturas e faixas.
+  Studio_Suzu_Selo_Ideograma_Light.svg / _Dark.svg
+      selo redondo com o 鈴 no centro. Uso pontual: assinatura, marca de autoria.
+  Studio_Suzu_Inline_Ideograma_Light.svg / _Dark.svg
+      "suzu" · bolinha coral #E89A85 · 鈴.
+
+/SVG/Sabores e /PNG/Sabores — sistema de sabores
+  O mesmo selo preenchido com uma cor da paleta, uma por coleção.
+  As letras são SEMPRE tinta #463C34. O grafite em contorno segue sendo o oficial;
+  o selo cheio é para avatar, adesivo e coleção.
+
+    sakura   #E4A7B0      fuji     #BDB0D0      torinoko  #E6D3A3
+    mizu     #A6C9CC      sango    #E89A85      matcha    #C6CFA3
+
+  Para cada sabor há duas peças: Selo_<sabor> (su/zu) e Selo_Ideograma_<sabor> (鈴).
+
+/PNG — rasterizado
+  Selo_* e Selo_Ideograma_*   1024x1024, fundo transparente (RGBA)
+  Inline_*                    2400px de largura, fundo transparente
+
+/Aplicacao_Ondas — logo sobre o padrão de ondas 青海波
+  Aplicacao_Ondas_Selo.svg — selo redondo numa clareira sólida sobre as ondas.
+  A clareira é obrigatória: o selo nunca vai direto sobre padrão.
+
+Tamanhos mínimos (medidos, não estimados)
+  selo contorno  32 px / 10 mm
+  selo cheio     24 px /  8 mm   ← abaixo de 32 px, prefira o cheio:
+                                   o disco sólido sobrevive onde o anel de fio some
+  inline         80 px / 25 mm
+  Área de proteção: ¼ do diâmetro do selo, nos quatro lados.
+
+Light = sobre fundos claros · Dark = sobre fundos escuros.
+
+Obs.: a antiga "caixa" (su/zu em quadrado arredondado) foi abandonada e seus arquivos
+não existem mais. O selo redondo a substituiu em todos os usos, inclusive avatar.
