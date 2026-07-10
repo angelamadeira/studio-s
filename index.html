@@ -320,7 +320,7 @@
   .demo .ring{stroke:var(--seal-ink)}
   .demo .ink{fill:var(--seal-ink)}
   .demo .clearing{fill:var(--bg)}
-  .sizes{display:flex;align-items:flex-end;justify-content:center;gap:1.3rem;min-height:88px}
+  .sizes{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:center;gap:1.3rem 1.1rem;min-height:88px}
   .sizes figure{text-align:center}
   .sizes svg{display:block}
   .sizes span{display:block;font-size:.58rem;letter-spacing:.1em;color:var(--rotulo);margin-top:.6rem}
@@ -371,7 +371,7 @@
   .estampa svg{width:100%;height:100%;display:block}
 
   /* ============ TONAL SYSTEM ============ */
-  .tones{margin-top:1.6rem;display:grid;gap:1.3rem}
+  .tones{margin-top:1.6rem;display:grid;gap:1.3rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
   .tone-legend{display:grid;grid-template-columns:6.5rem repeat(4,1fr);gap:.6rem;margin-bottom:.1rem}
   /* exceção consciente: as colunas do sistema tonal são estreitas demais para o tracking padrão */
   .tone-legend span{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--rotulo);text-align:center}
@@ -397,7 +397,7 @@
 
   /* ---------- responsive ---------- */
   @media(max-width:760px){
-    .pillars,.voice,.logo-grid,.rules{grid-template-columns:1fr}
+    .pillars,.voice,.logo-grid,.rules ul{grid-template-columns:1fr}
     .pal-4,.pal-5,.pal-6,.pal-7,.neutros-ramp,.weights,.demo-grid{grid-template-columns:repeat(3,1fr)}
     .deflist .row,.specimen>div{grid-template-columns:1fr;gap:.35rem}
     .tone-legend,.tone-row{grid-template-columns:4.4rem repeat(4,1fr)}
@@ -414,6 +414,10 @@
      [data-reveal] starts at opacity:0 and is only revealed by the IntersectionObserver
      on scroll. Without this block, every section the reader never scrolled to prints blank. */
   @media print{
+    /* o bloco de impressão vem ANTES de .sem-scroll na folha: precisa de !important,
+       igual às regras vizinhas. No papel a tabela não rola, ela inteira aparece. */
+    .sem-scroll,.tones{overflow:visible!important}
+    .sem{min-width:0!important}
     /* !important vence a especificidade de :root[data-theme="dark"] — o papel é sempre claro */
     :root{--bg:#FFFFFF!important;--papel:#FFFFFF!important;--text:#463C34!important;
           --text-2:#4d423a!important;--text-3:#5f5347!important;--text-4:#6b5f52!important;
@@ -495,6 +499,10 @@
 
   /* ---------- feedback ---------- */
   .fb{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:1.8rem}
+  /* Estas media queries TÊM de vir depois da regra base: @media não confere prioridade
+     nenhuma — a especificidade é a mesma (.fb), então quem vier por último vence. */
+  @media(max-width:900px){ .fb{grid-template-columns:1fr 1fr} }
+  @media(max-width:520px){ .fb{grid-template-columns:1fr} }
   .fb>div{border-radius:12px;padding:1.3rem 1.4rem;border:1px solid}
   .fb .r{font-size:var(--label-sm);letter-spacing:var(--label-sm-track);text-transform:uppercase;margin-bottom:.7rem;display:block}
   .fb .msg{font-size:.94rem;line-height:1.45}
@@ -507,7 +515,10 @@
   .fb .info{background:var(--info-surface);border-color:var(--info-border);color:var(--info-text)}
 
   /* ---------- tabela semantica: light <-> dark ---------- */
-  .sem{width:100%;border-collapse:collapse;margin-top:1.8rem;font-size:.86rem}
+  /* Conteúdo largo rola dentro do próprio contêiner; o body nunca rola na horizontal.
+     Os valores rgba não quebram, então a tabela tem um piso de largura. */
+  .sem-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:1.8rem}
+  .sem{width:100%;min-width:30rem;border-collapse:collapse;font-size:.86rem}
   .sem th{text-align:left;font-weight:400;font-size:var(--label-sm);letter-spacing:var(--label-sm-track);text-transform:uppercase;
           color:var(--rotulo);padding:0 0 .9rem;border-bottom:1px solid var(--line)}
   .sem td{padding:1rem 0;border-bottom:1px solid var(--hair);vertical-align:middle}
@@ -957,7 +968,8 @@
 
     <p class="block-label" data-reveal>light ↔ dark</p>
     <p class="lede measure" data-reveal style="font-size:.95rem;margin-bottom:.4rem">Every token that changes with the theme, and nothing else. The palette colors themselves never flip — <em>ink</em> is always <span class="spec">#463C34</span>. What flips is the <em>role</em> it plays.</p>
-    <table class="sem" data-reveal>
+    <div class="sem-scroll" data-reveal>
+    <table class="sem">
       <thead><tr><th>role</th><th>light</th><th>dark</th></tr></thead>
       <tbody>
       <tr class="grp"><td colspan="3">surfaces &amp; text</td></tr>
@@ -986,6 +998,7 @@
       <tr><td>dark plate · row line</td><td><span class="v"><i class="a" style="--c:rgba(243,235,221,.14)"></i>rgba(243,235,221,.14)<span class="alpha">α</span></span></td><td><span class="v"><i class="a" style="--c:rgba(243,235,221,.14)"></i>rgba(243,235,221,.14)<span class="alpha">α</span></span></td></tr>
       </tbody>
     </table>
+    </div>
     <p class="nota" data-reveal>Values marked <b>α</b> carry an alpha channel and sit among the others, in the group they belong to. They composite over whatever is beneath them, so the hex alone is not the color — their swatch shows each one over white and over charcoal. Never flatten an α value into a solid hex: it will be wrong on every surface but one.</p>
 
 
