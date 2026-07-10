@@ -431,7 +431,12 @@
     .tone-legend,.tone-row{grid-template-columns:4.4rem repeat(4,1fr)}
   }
   @media(max-width:520px){
-    .weights,.demo-grid,.seals{grid-template-columns:repeat(2,1fr)}
+    .weights,.seals{grid-template-columns:repeat(2,1fr)}
+    /* 3 demos em 2 colunas deixam um card órfão e desalinham a fileira de tamanhos.
+       Empilhadas, cada uma ganha a largura toda e a demonstração respira. */
+    .demo-grid{grid-template-columns:1fr}
+    .demo{padding:2rem 1.6rem 1.6rem}
+    .demo>svg{width:min(52%,150px)}
   }
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important}
@@ -524,9 +529,21 @@
     color:var(--rotulo);background:var(--papel);border:1px solid var(--line);border-radius:999px;
     padding:.55rem 1rem;min-height:32px;transition:color .15s,border-color .15s}
   .theme-toggle:hover{color:var(--text);border-color:var(--ouro)}
-  /* fixed cobre o canto superior direito de TODO o texto que passa por baixo.
-     Abaixo de 900px não há margem sobrando: o botão passa a rolar com a página. */
-  @media(max-width:900px){ .theme-toggle{position:absolute} }
+  /* No desktop há margem à direita da coluna (--wrap 64rem), então fixed no topo não
+     cobre nada. Abaixo disso a coluna é cheia: o botão desce para o rodapé, continua
+     fixed (segue o scroll, que é o que se espera dele) e fica fora da coluna de leitura. */
+  @media(max-width:900px){
+    /* No celular a coluna é cheia; um pílula com a palavra cobriria linhas de texto.
+       Vira um ícone redondo no rodapé: segue o scroll, alvo de toque de 44px, cobre
+       o mínimo. A palavra some do visual mas o aria-label (posto pelo JS) permanece. */
+    .theme-toggle{top:auto;bottom:calc(1rem + env(safe-area-inset-bottom,0px));right:1rem;
+      width:44px;height:44px;min-height:0;padding:0;border-radius:50%;
+      font-size:0;display:grid;place-items:center;
+      box-shadow:0 6px 20px -8px rgba(70,60,52,.5)}
+    .theme-toggle::before{content:"\263E";font-size:1.15rem;letter-spacing:0;color:var(--rotulo)}
+    .theme-toggle[aria-pressed="true"]::before{content:"\2600"}
+    .theme-toggle:hover::before{color:var(--text)}
+  }
 
   /* ---------- feedback ---------- */
   .fb{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:1.8rem}
