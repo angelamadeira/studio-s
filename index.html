@@ -58,10 +58,10 @@
     --d-error-surface:#301F1F;   --d-error-text:#B37B85;
     --d-success-surface:#39372D; --d-warning-surface:#393021; --d-info-surface:#343633;
 
-    --error:var(--suo);      --error-surface:#E1CBCA; --error-border:#B7838C; --error-text:#8E3B4E;
-    --success:var(--matcha); --success-surface:#ECEDDB; --success-border:#DADFC1; --success-text:#6F6B58;
-    --warning:var(--ouro);   --warning-surface:#ECE0C7; --warning-border:#D9C393; --warning-text:#736142;
-    --info:var(--mizu);      --info-surface:#E3EBE7; --info-border:#C6DBDA; --info-text:#656965;
+    --error:var(--suo);      --error-surface:#E1CBCA; --error-text:#8E3B4E;
+    --success:var(--matcha); --success-surface:#ECEDDB; --success-text:#6F6B58;
+    --warning:var(--ouro);   --warning-surface:#ECE0C7; --warning-text:#736142;
+    --info:var(--mizu);      --info-surface:#E3EBE7; --info-text:#656965;
 
     /* TEXT variants: the brand hexes above don't reach 4.5:1 on light.
        Use these when a color becomes a letter; the originals stay for fills and borders. */
@@ -249,7 +249,7 @@
 
   .traits{display:flex;flex-wrap:wrap;gap:.8rem;margin:1rem 0 0}
   .traits span{border:1px solid var(--ouro);border-radius:999px;padding:.55rem 1.2rem;font-size:.94rem;color:var(--text);background:var(--papel)}
-  .block-label{font-family:var(--sans);font-size:var(--label);letter-spacing:var(--label-track);text-transform:uppercase;color:var(--rotulo);margin:4rem 0 1.6rem;display:flex;align-items:center}
+  .block-label{font-family:var(--sans);font-weight:400;font-size:var(--label);letter-spacing:var(--label-track);text-transform:uppercase;color:var(--rotulo);margin:4rem 0 1.6rem;display:flex;align-items:center}
   .block-label::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ouro);margin-right:.7em;flex:0 0 auto}
 
   /* we are / we are not */
@@ -386,7 +386,7 @@
   .tones{margin-top:1.6rem;display:grid;gap:1.3rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
   .tone-legend{display:grid;grid-template-columns:6.5rem repeat(4,1fr);gap:.6rem;margin-bottom:.1rem}
   /* exceção consciente: as colunas do sistema tonal são estreitas demais para o tracking padrão */
-  .tone-legend span{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--rotulo);text-align:center}
+  .tone-legend span{font-weight:400;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--rotulo);text-align:center}
   .tone-legend span:first-child{text-align:left}
   .tone-row{display:grid;grid-template-columns:6.5rem repeat(4,1fr);gap:.6rem;align-items:start}
   .tone-row .lab{font-size:.82rem;color:var(--text);padding-top:.6rem}
@@ -556,17 +556,17 @@
      nenhuma — a especificidade é a mesma (.fb), então quem vier por último vence. */
   @media(max-width:900px){ .fb{grid-template-columns:1fr 1fr} }
   @media(max-width:520px){ .fb{grid-template-columns:1fr} }
-  .fb>div{border-radius:12px;padding:1.3rem 1.4rem;border:1px solid}
+  .fb>div{border-radius:12px;padding:1.3rem 1.4rem;border:1px solid var(--line)}
   .fb .r{font-size:var(--label-sm);letter-spacing:var(--label-sm-track);text-transform:uppercase;margin-bottom:.7rem;display:flex;align-items:center;gap:.5em}
   .fb .r .icon{width:15px;height:15px}
   .fb .msg{font-size:.94rem;line-height:1.45}
   /* nada de opacity aqui: ela mistura o texto com o fundo e derruba o contraste
      de 4,7 para 3,7 sem que auditor nenhum perceba. Hierarquia vem do tamanho. */
   .fb .hex{font-size:.62rem;font-variant-numeric:tabular-nums;margin-top:.9rem;letter-spacing:.04em}
-  .fb .error{background:var(--error-surface);border-color:var(--error-border);color:var(--error-text)}
-  .fb .success{background:var(--success-surface);border-color:var(--success-border);color:var(--success-text)}
-  .fb .warning{background:var(--warning-surface);border-color:var(--warning-border);color:var(--warning-text)}
-  .fb .info{background:var(--info-surface);border-color:var(--info-border);color:var(--info-text)}
+  .fb .error{background:var(--error-surface);color:var(--error-text)}
+  .fb .success{background:var(--success-surface);color:var(--success-text)}
+  .fb .warning{background:var(--warning-surface);color:var(--warning-text)}
+  .fb .info{background:var(--info-surface);color:var(--info-text)}
 
   /* ---------- tabela semantica: light <-> dark ---------- */
   /* Conteúdo largo rola dentro do próprio contêiner; o body nunca rola na horizontal.
@@ -656,7 +656,7 @@
 <!-- ============ COVER ============ -->
 <header class="cover">
   <h1 class="sr-only">Studio Suzu — Brandbook</h1>
-  <span class="eyebrow">Authorial mold studio for confectionery</span>
+  <span class="eyebrow">Signature molds for confectionery</span>
 
   <div class="cover-row">
     <span class="cd" style="--c:var(--sakura);--d:.30s"></span>
@@ -770,7 +770,7 @@
     <p class="lede measure" data-reveal>Studio Suzu is the signature mold studio for the professional who treats confectionery as authorship — and charges for it.</p>
 
     <dl class="deflist" data-reveal>
-      <div class="row"><dt>Category</dt><dd>Authorial mold studio for confectionery (silicone and the like).</dd></div>
+      <div class="row"><dt>Category</dt><dd>Signature molds for confectionery (silicone and the like).</dd></div>
       <div class="row"><dt>Audience</dt><dd>Confectioners, chocolatiers and ateliers who sell what they make and look for exclusive shapes.</dd></div>
       <div class="row"><dt>Differentiator</dt><dd>Our own exclusive 3D design — the mold belongs to the brand, not to a catalog. We compete on <em>authorship</em>, never on price.</dd></div>
       <div class="row"><dt>Promise</dt><dd>A dessert no one can copy, because the shape starts here.</dd></div>
@@ -1037,7 +1037,12 @@
       <tr><td>hairline · subtle</td><td><span class="v"><i class="a" style="--c:rgba(70,60,52,.10)"></i>rgba(70,60,52,.10)<span class="alpha">α</span></span></td><td><span class="v"><i class="a" style="--c:rgba(243,235,221,.10)"></i>rgba(243,235,221,.10)<span class="alpha">α</span></span></td></tr>
       <tr><td>text</td><td><span class="v"><i style="background:#463C34"></i>#463C34</span></td><td><span class="v"><i style="background:#F3EBDD"></i>#F3EBDD</span></td></tr>
       <tr><td>text · secondary</td><td><span class="v"><i style="background:#4D423A"></i>#4D423A</span></td><td><span class="v"><i style="background:#DFD5C6"></i>#DFD5C6</span></td></tr>
+      <tr><td>text · tertiary</td><td><span class="v"><i style="background:#5F5347"></i>#5F5347</span></td><td><span class="v"><i style="background:#CDC2B1"></i>#CDC2B1</span></td></tr>
+      <tr><td>text · muted</td><td><span class="v"><i style="background:#6B5F52"></i>#6B5F52</span></td><td><span class="v"><i style="background:#BDB2A1"></i>#BDB2A1</span></td></tr>
       <tr><td>label</td><td><span class="v"><i style="background:#6F5E48"></i>#6F5E48</span></td><td><span class="v"><i style="background:#C9B191"></i>#C9B191</span></td></tr>
+      <tr><td>gold · text</td><td><span class="v"><i style="background:#907234"></i>#907234</span></td><td><span class="v"><i style="background:#C4A25A"></i>#C4A25A</span></td></tr>
+      <tr><td>stone · text</td><td><span class="v"><i style="background:#84745E"></i>#84745E</span></td><td><span class="v"><i style="background:#B9AA93"></i>#B9AA93</span></td></tr>
+      <tr><td>wood · text</td><td><span class="v"><i style="background:#917147"></i>#917147</span></td><td><span class="v"><i style="background:#C9B191"></i>#C9B191</span></td></tr>
       <tr><td>logo ink</td><td><span class="v"><i style="background:#3A3038"></i>#3A3038</span></td><td><span class="v"><i style="background:#FFFFFF"></i>#FFFFFF</span></td></tr>
       <tr><td>footer plate</td><td><span class="v"><i style="background:#F3EBDD"></i>#F3EBDD</span></td><td><span class="v"><i style="background:#292521"></i>#292521</span></td></tr>
       <tr class="grp"><td colspan="3">feedback</td></tr>
@@ -1056,7 +1061,7 @@
       </tbody>
     </table>
     </div>
-    <p class="nota" data-reveal>Values marked <b>α</b> carry an alpha channel and sit among the others, in the group they belong to. They composite over whatever is beneath them, so the hex alone is not the color — their swatch shows each one over white and over charcoal. Never flatten an α value into a solid hex: it will be wrong on every surface but one.</p>
+    <p class="nota" data-reveal>On light, gold, stone and wood are too pale to be letters, so they darken into the <em>· text</em> variants above; on charcoal the base color already reads, so it is reused. Values marked <b>α</b> carry an alpha channel and sit among the others, in the group they belong to. They composite over whatever is beneath them, so the hex alone is not the color — their swatch shows each one over white and over charcoal. Never flatten an α value into a solid hex: it will be wrong on every surface but one.</p>
 
 
     <div class="estampa-block">
